@@ -14,4 +14,6 @@
 
 ## schemas???
 
-## 
+# things to ask Ryan
+
+## how do we customize the url that we shorten?

@@ -1,4 +1,4 @@
-const { getAgent, getUsers } = require('./data-helpers');
+const { getAgent, getUsers, getURLs } = require('./data-helpers');
 
 const request = require('supertest');
 const app = require('../lib/app');
@@ -18,11 +18,16 @@ describe('url routes', () => {
       });
   });
   
-  it('shortens... the... url???', () => {
+  it('getting short ID reroutes to original', () => {
+    const URL = getURLs()[0];
     return getAgent()
-    .get('/api/v1/urls/:id')
-  })
+      .get(`/api/v1/urls/${URL.shortURLId}`)
+      .then(res => {
+        expect(res.text).toEqual(`OK. Redirecting to ${URL.originalURL}`);
+      });
+  });
   // get original url by id
 
   // post 
 })
+;

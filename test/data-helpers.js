@@ -37,5 +37,5 @@ afterAll(() => {
 module.exports = {
   getAgent: () => agent,
   getUsers: () => seededUsers,
-  getLongURLs: () => seededURLs
+  getURLs: () => seededURLs
 };

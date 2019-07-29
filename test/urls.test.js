@@ -4,7 +4,7 @@ const request = require('supertest');
 const app = require('../lib/app');
 
 describe('url routes', () => {
-  it('user can upload original url and it works', () => {
+  it('user can upload original url', () => {
     return getAgent()
       .post('/api/v1/urls')
       .send({ originalURL: 'http://www.google.com' })
@@ -17,6 +17,10 @@ describe('url routes', () => {
       });
   });
   
+  it('shortens... the... url???', () => {
+    return getAgent()
+    .get('/api/v1/urls/:id')
+  })
   // get original url by id
 
   // post 

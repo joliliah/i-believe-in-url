@@ -12,18 +12,18 @@ module.exports = async({ users = 12, URLs = 10 } = { users: 12, URLs: 10 }) => {
 
   const userURL = await URL.create({
     user: createdUsers[0]._id,
-    longURL: chance.url()
+    originalURL: chance.url()
   });
 
   const createdURLs = await URL.create(
     [...Array(URLs - 1)].map(() => ({
       user: chance.pickone(createdUsers)._id,
-      URL: chance.url()
+      originalURL: chance.url()
     }))
   );
 
   return {
     users: createdUsers,
-    longURLs: [userURL, ...createdURLs],
+    URLs: [userURL, ...createdURLs],
   };
 };

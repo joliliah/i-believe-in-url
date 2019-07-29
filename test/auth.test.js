@@ -12,6 +12,7 @@ describe('user auth', () => {
         password: 'password'
       })
       .then(res => {
+        console.log(res.body);
         expect(res.body).toEqual({
           _id: expect.any(String),
           username: 'Joliliah'

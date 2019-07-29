@@ -1,8 +1,8 @@
 const User = require('../lib/models/User');
-const LongURL = require('../lib/models/LongURL');
+const URL = require('../lib/models/URL');
 const chance = require('chance').Chance();
 
-module.exports = async({ users = 12, longURLs = 10 } = { users: 12, longURLs: 10 }) => {
+module.exports = async({ users = 12, URLs = 10 } = { users: 12, URLs: 10 }) => {
   const createdUsers = await User.create(
     [...Array(users)].map(() => ({
       username: chance.name(),
@@ -10,20 +10,20 @@ module.exports = async({ users = 12, longURLs = 10 } = { users: 12, longURLs: 10
     }))
   );
 
-  const userLongURL = await LongURL.create({
+  const userURL = await URL.create({
     user: createdUsers[0]._id,
     longURL: chance.url()
   });
 
-  const createdLongURLs = await LongURL.create(
-    [...Array(longURLs - 1)].map(() => ({
+  const createdURLs = await URL.create(
+    [...Array(URLs - 1)].map(() => ({
       user: chance.pickone(createdUsers)._id,
-      LongURL: chance.url()
+      URL: chance.url()
     }))
   );
 
   return {
     users: createdUsers,
-    longURLs: [userLongURL, ...createdLongURLs],
+    longURLs: [userURL, ...createdURLs],
   };
 };

@@ -1,12 +1,9 @@
-const { getAgent, getUsers, getURLs } = require('./data-helpers');
-
-const request = require('supertest');
-const app = require('../lib/app');
+const { getAgent, getURLs } = require('./data-helpers');
 
 describe('url routes', () => {
   it('user can upload original url', () => {
     return getAgent()
-      .post('/api/v1/urls')
+      .post('/')
       .send({ originalURL: 'http://www.google.com' })
       .then(res => {
         expect(res.body).toEqual({ 
@@ -23,11 +20,7 @@ describe('url routes', () => {
     return getAgent()
       .get(`/${URL.shortURLId}`)
       .then(res => {
-        expect(res.text).toEqual(`OK. Redirecting to ${URL.originalURL}`);
+        expect(res.text).toEqual(`Found. Redirecting to ${URL.originalURL}`);
       });
   });
-  // get original url by id
-
-  // post 
-})
-;
+});

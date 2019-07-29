@@ -12,7 +12,8 @@ describe('url routes', () => {
         expect(res.body).toEqual({ 
           _id: expect.any(String),
           createdBy: expect.any(String),
-          originalURL: 'http://www.google.com'
+          originalURL: 'http://www.google.com',
+          shortURLId: expect.any(String)
         });
       });
   });

@@ -21,7 +21,7 @@ describe('url routes', () => {
   it('getting short ID reroutes to original', () => {
     const URL = getURLs()[0];
     return getAgent()
-      .get(`/api/v1/urls/${URL.shortURLId}`)
+      .get(`/${URL.shortURLId}`)
       .then(res => {
         expect(res.text).toEqual(`OK. Redirecting to ${URL.originalURL}`);
       });

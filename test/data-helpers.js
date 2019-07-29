@@ -8,8 +8,6 @@ const seedData = require('./seed-data');
 
 const prepare = arr => JSON.parse(JSON.stringify(arr));
 
-
-
 beforeAll(() => {
   connect();
 });
@@ -20,11 +18,12 @@ beforeEach(() => {
 
 let agent = request.agent(app);
 let seededUsers = null;
-let seededLongURLs = null;
+let seededURLs = null;
+
 beforeEach(async() => {
-  const { users, longURLs } = await seedData();
+  const { users, URLs } = await seedData();
   seededUsers = prepare(users);
-  seededLongURLs = prepare(longURLs);
+  seededURLs = prepare(URLs);
 
   return await agent 
     .post('/api/v1/auth/signin')
@@ -38,5 +37,5 @@ afterAll(() => {
 module.exports = {
   getAgent: () => agent,
   getUsers: () => seededUsers,
-  getLongURLs: () => seededLongURLs
+  getLongURLs: () => seededURLs
 };

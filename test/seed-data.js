@@ -32,8 +32,6 @@ module.exports = async({ users = 12, URLs = 10, hits = 50 } = { users: 12, URLs:
         }));
     }));
     
-  
-
   return {
     users: createdUsers,
     URLs: [userURL, ...createdURLs],

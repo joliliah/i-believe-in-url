@@ -29,6 +29,7 @@ module.exports = async({ users = 12, URLs = 10, hits = 50 } = { users: 12, URLs:
         .map(() => ({
           URL: URL._id,
           ip: chance.ip(),
+          time: chance.date()
         }));
     }));
     

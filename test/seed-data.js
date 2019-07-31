@@ -16,8 +16,14 @@ module.exports = async({ users = 12, URLs = 10, hits = 50 } = { users: 12, URLs:
     originalURL: chance.url()
   });
 
+  await Hit.create({
+    URL: userURL._id,
+    ip: chance.ip(),
+    time: chance.date()
+  });
+
   const createdURLs = await URL.create(
-    [...Array(URLs - 1)].map(() => ({
+    [...Array(URLs)].map(() => ({
       user: chance.pickone(createdUsers)._id,
       originalURL: chance.url()
     }))

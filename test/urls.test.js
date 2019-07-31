@@ -29,7 +29,6 @@ describe('url routes', () => {
     return getAgent()
       .get(`/hits/${URL._id}`)
       .then(res => {
-        console.log(res.body.hits[0].location)
         expect(res.body).toEqual({
           _id: URL._id,
           originalURL: URL.originalURL,

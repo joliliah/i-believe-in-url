@@ -2,7 +2,6 @@ const User = require('../lib/models/User');
 const URL = require('../lib/models/URL');
 const Hit = require('../lib/models/Hit');
 const chance = require('chance').Chance();
-const geoip = require('geoip-lite');
 const ipParser = require('../lib/utils/ipParser');
 
 module.exports = async({ users = 12, URLs = 10, hits = 50 } = { users: 12, URLs: 10, hits: 50 }) => {

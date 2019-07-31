@@ -29,6 +29,7 @@ describe('url routes', () => {
     return getAgent()
       .get(`/hits/${URL._id}`)
       .then(res => {
+        console.log(res.body.hits[0].location)
         expect(res.body).toEqual({
           _id: URL._id,
           originalURL: URL.originalURL,
@@ -37,7 +38,11 @@ describe('url routes', () => {
             URL: URL._id,
             _id: expect.any(String),
             __v: 0,
-            ip: expect.any(String),
+            location: {
+              ip: expect.any(String),
+              country: expect.any(String),
+              city: expect.any(String)
+            },
             time: expect.any(String),
             createdAt: expect.any(String),
             updatedAt: expect.any(String)

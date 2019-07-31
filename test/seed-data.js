@@ -2,6 +2,8 @@ const User = require('../lib/models/User');
 const URL = require('../lib/models/URL');
 const Hit = require('../lib/models/Hit');
 const chance = require('chance').Chance();
+const geoip = require('geoip-lite');
+const ipParser = require('../lib/utils/ipParser');
 
 module.exports = async({ users = 12, URLs = 10, hits = 50 } = { users: 12, URLs: 10, hits: 50 }) => {
   const createdUsers = await User.create(
@@ -18,7 +20,7 @@ module.exports = async({ users = 12, URLs = 10, hits = 50 } = { users: 12, URLs:
 
   await Hit.create({
     URL: userURL._id,
-    ip: chance.ip(),
+    location: ipParser(),
     time: chance.date()
   });
 
@@ -32,11 +34,13 @@ module.exports = async({ users = 12, URLs = 10, hits = 50 } = { users: 12, URLs:
   const createdHits = await Hit
     .create(createdURLs.flatMap(URL => {
       return [...Array(chance.integer({ min: 1, max: hits }))]
-        .map(() => ({
-          URL: URL._id,
-          ip: chance.ip(),
-          time: chance.date()
-        }));
+        .map(() => {
+          return { 
+            URL: URL._id,
+            location: ipParser(),
+            time: chance.date()
+          };
+        });
     }));
     
   return {

@@ -1,5 +1,4 @@
 require('dotenv').config();
-
 const { getAgent, getURLs } = require('./data-helpers');
 
 describe('It is our Hits test', () => {

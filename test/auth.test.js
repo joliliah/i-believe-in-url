@@ -45,6 +45,4 @@ describe('user auth', () => {
         });
       });
   });
-
-  // TODO aggregation test
 });

@@ -6,7 +6,7 @@ A URL shortening web app.
 
 https://happy-lovelace-66fb73.netlify.com/auth.html
 
-# Front-End Rpo
+# Front-End Repo
 
 https://github.com/joliliah/i-believe-in-url-frontend/tree/dev
 

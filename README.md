@@ -1,6 +1,6 @@
 # I Believe in URL
 
-A URL shortening webb app.
+A URL shortening web app.
 
 # Deployed
 

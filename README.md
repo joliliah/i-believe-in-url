@@ -1,19 +1,16 @@
-# things we need to do:
+# I Believe in URL
 
-## research article Lili posted in slack
+A URL shortening webb app.
 
-## ensure installation of all necessary dependencies
+# Deployed
 
-## create server
+https://happy-lovelace-66fb73.netlify.com/auth.html
 
-## create crud route tests
+# The Tech
 
-## create basic crud routes
-
-## research admin/user implementation
-
-## schemas???
-
-# things to ask Ryan
-
-## how do we customize the url that we shorten?
+* MongoDB
+* Mongoose
+* Express 
+* JavaScript
+* HTML
+* CSS
